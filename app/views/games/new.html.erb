@@ -1,6 +1,7 @@
 <div class="container text-center">
   <h1>Logest Word Game</h1>
-  <h2><%= session[:score] %></h2>
+  <h2><%= session[:score] %> Points</h2>
+  <h2><%= session[:count] %> Round</h2>
   <div class="row">
     <% @letters.each do |letter| %>
       <div class="col-sm-1 btn btn-primary m-2">

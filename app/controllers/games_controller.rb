@@ -3,6 +3,7 @@ require 'json'
 
 class GamesController < ApplicationController
   def new
+    session[:score] = 0 unless session[:score]
     @letters = []
     10.times do
       @letters << ('A'..'Z').to_a.sample
@@ -11,7 +12,12 @@ class GamesController < ApplicationController
   end
 
   def score
-    session[:score] = 0 unless session[:score]
+    session[:count] = 0 unless session[:count]
+    session[:count] += 1
+    if session[:count] > 5
+      session[:count] = 0
+      session[:score] = 0
+    end
     @result = run_game(params[:word], params[:letters], Time.parse(params[:start]), Time.parse(params[:end]))
   end
 
