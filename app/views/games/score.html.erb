@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Logest Word Game</h1>
+  <p>Find me in app/views/games/score.html.erb</p>
+
+  <p>
+    <%= params[:letters] %>
+    <br>
+    <%= params[:word] %>
+    <br>
+  </p>
+
+  <p>
+    <%= @result[:score] %>
+    <br>
+    <%= @result[:message] %>
+  </p>
+
+  <h1><%= params[:start] %></h1>
+
+  <%= link_to "Play Again", 'new' %>
+</div>

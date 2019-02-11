@@ -1,0 +1,19 @@
+<div class="container text-center">
+  <h1>Logest Word Game</h1>
+  <div class="row">
+    <% @letters.each do |letter| %>
+      <div class="col-sm-1 btn btn-primary m-2">
+        <h1><%=letter %></h1>
+      </div>
+    <% end %>
+    <h2><%= @stime %></h2>
+  </div>
+  <form class="form-group form-inline" action="score" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    <%= hidden_field_tag :start, @stime %>
+    <input class="form-control" type="text" name="word">
+    <input class="btn btn-primary" type="submit" value="Send">
+    <%= hidden_field_tag :end, Time.now %>
+  </form>
+</div>
