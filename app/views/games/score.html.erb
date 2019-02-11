@@ -1,21 +1,26 @@
 <div class="container">
-  <h1>Logest Word Game</h1>
-  <p>Find me in app/views/games/score.html.erb</p>
-
-  <p>
-    <%= params[:letters] %>
-    <br>
-    <%= params[:word] %>
-    <br>
-  </p>
-
-  <p>
-    <%= @result[:score] %>
-    <br>
-    <%= @result[:message] %>
-  </p>
-
-  <h1><%= params[:start] %></h1>
-
-  <%= link_to "Play Again", 'new' %>
+  <h1 class="text-center">Logest Word Game</h1>
+  <h2><%= session["session_id"] %></h2>
+  <div class="row text-center">
+     <% params[:letters].split(" ").each do |letter| %>
+        <div class="col-sm-1 btn btn-primary m-2">
+          <h1><%=letter %></h1>
+        </div>
+      <% end %>
+      <div class="card col-sm-12">
+        <div class="card-body">
+          <h3 class="card-title">
+            <% session[:score] += @result[:score] %>
+            <%= session[:score] %> Points
+          </h3>
+          <h6 class="card-subtitle">
+            <%= params[:word] %>
+          </h6>
+          <p class="card-text">
+            <%= @result[:message] %>
+          </p>
+            <%= link_to "Play Again", 'new' %>
+        </div>
+      </div>
+  </div>
 </div>

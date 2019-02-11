@@ -11,6 +11,7 @@ class GamesController < ApplicationController
   end
 
   def score
+    session[:score] = 0 unless session[:score]
     @result = run_game(params[:word], params[:letters], Time.parse(params[:start]), Time.parse(params[:end]))
   end
 
